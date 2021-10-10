@@ -3,25 +3,30 @@ import { Form, Input, Button, Checkbox } from 'antd'
 import {Blockchain, Block, Transaction} from '../utils/blockchain'
 import Link from 'next/link'
 import { useEffect } from 'react'
+import {GlobalProvider, useBlockchain} from '../context/global-context'
+
 const EC = require('elliptic').ec
 const ec = new EC('secp256k1')
 
 const myWalletAddress = '04eac26a0bf07b189615a98788ac471aa6dda262b7fa5b80772347684e972d00eb11e9b53e46f4a664bc7490899e90a9e88aae559d228c4a650feca4294fe47863'
 const myKey = ec.keyFromPrivate('1be1c091f5f3aa4cb6cb6bfa4cfe6308ec39b38be734c42ace77f806dbfdb055')
 let tx: any
-
+//add_transaction
 const NewTransaction = () => {
+	const {state, dispatch} = useBlockchain()
 
     useEffect(() => {
-        console.log('myCoin', window.myCoin)
-    }, [])
+        console.log('myCoin', state)
+    }, [dispatch])
 
 	const onFinish = (values: any) => {
         tx = new Transaction(myWalletAddress, values.receiver, values.amount)
         tx.signTransaction(myKey)
-        window.myCoin.addTransaction(tx)
 
-        console.log('mycoin',window.myCoin)
+		dispatch({type: 'add_transaction', transaction: tx})
+        //window.myCoin.addTransaction(tx)
+
+        //console.log('mycoin',window.myCoin)
 	}
 
 	const onFinishFailed = (errorInfo: any) => {
