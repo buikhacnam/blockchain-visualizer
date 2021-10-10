@@ -35,7 +35,7 @@ class Transaction {
 }
 
 class Block {
-	constructor(timestamp, transactions, previousHash = '') {
+	constructor(timestamp, transactions, previousHash) {
 		this.timestamp = timestamp
 		this.transactions = transactions
 		this.previousHash = previousHash
@@ -81,7 +81,7 @@ class Blockchain {
 	}
 
 	createGenesisBlock() {
-		return new Block('01/01/2018', 'Genesis block', '0')
+		return new Block('1483228800000', 'Genesis block', '0')
 	}
 
 	getLatestBlock() {
@@ -98,7 +98,8 @@ class Blockchain {
 	minePendingTransactions(miningRewardAddress) {
 		const rewardTx = new Transaction(null, miningRewardAddress, this.miningReward)
 		this.pendingTransactions.push(rewardTx)
-		let block = new Block(Date.now(), this.pendingTransactions)
+		let prevHash = this.getLatestBlock().hash
+		let block = new Block(Date.now(), this.pendingTransactions, prevHash)
 		block.mineBlock(this.difficulty)
 
 		// console.log(

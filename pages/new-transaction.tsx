@@ -1,32 +1,22 @@
 // domain.com/new-transaction
 import { Form, Input, Button, Checkbox } from 'antd'
-import {Blockchain, Block, Transaction} from '../utils/blockchain'
+import { Blockchain, Block, Transaction } from '../utils/blockchain'
 import Link from 'next/link'
 import { useEffect } from 'react'
-import {GlobalProvider, useBlockchain} from '../context/global-context'
+import { GlobalProvider, useBlockchain } from '../context/global-context'
 
-const EC = require('elliptic').ec
-const ec = new EC('secp256k1')
-
-const myWalletAddress = '04eac26a0bf07b189615a98788ac471aa6dda262b7fa5b80772347684e972d00eb11e9b53e46f4a664bc7490899e90a9e88aae559d228c4a650feca4294fe47863'
-const myKey = ec.keyFromPrivate('1be1c091f5f3aa4cb6cb6bfa4cfe6308ec39b38be734c42ace77f806dbfdb055')
-let tx: any
-//add_transaction
 const NewTransaction = () => {
-	const {state, dispatch} = useBlockchain()
+	const { state, dispatch, myWalletAddress } = useBlockchain()
 
-    useEffect(() => {
-        console.log('myCoin', state)
-    }, [dispatch])
+	useEffect(() => {
+		if (!window.buiCoin) {
+			window.buiCoin = new Blockchain()
+		}
+		dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
+	}, [])
 
-	const onFinish = (values: any) => {
-        tx = new Transaction(myWalletAddress, values.receiver, values.amount)
-        tx.signTransaction(myKey)
-
-		dispatch({type: 'add_transaction', transaction: tx})
-        //window.myCoin.addTransaction(tx)
-
-        //console.log('mycoin',window.myCoin)
+	const onFinish = (transaction: any) => {
+		dispatch({ type: 'add_transaction', transaction })
 	}
 
 	const onFinishFailed = (errorInfo: any) => {
@@ -35,7 +25,7 @@ const NewTransaction = () => {
 	return (
 		<div>
 			<h1>New Transaction</h1>
-         <Link href='/'>Home</Link>
+			<Link href='/'>Home</Link>
 
 			<Form
 				name='basic'
@@ -49,13 +39,9 @@ const NewTransaction = () => {
 				<Form.Item
 					label='My Wallet Address'
 					name='myaddress'
-					rules={[
-						{
-							
-						},
-					]}
+					rules={[{}]}
 				>
-					<Input disabled defaultValue={myWalletAddress}/>
+					<Input disabled defaultValue={myWalletAddress} />
 				</Form.Item>
 
 				<Form.Item
@@ -71,7 +57,7 @@ const NewTransaction = () => {
 					<Input />
 				</Form.Item>
 
-                <Form.Item
+				<Form.Item
 					label='Amount'
 					name='amount'
 					rules={[
@@ -83,7 +69,6 @@ const NewTransaction = () => {
 				>
 					<Input type='number' />
 				</Form.Item>
-				
 
 				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 					<Button type='primary' htmlType='submit'>
@@ -91,6 +76,11 @@ const NewTransaction = () => {
 					</Button>
 				</Form.Item>
 			</Form>
+			<Button
+				onClick={() => {dispatch({type: 'mine_block'})}}
+			>
+				Mine
+			</Button>
 		</div>
 	)
 }

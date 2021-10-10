@@ -1,8 +1,8 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import 'antd/dist/antd.css'
-import {GlobalProvider} from '../context/global-context'
-import {useEffect} from 'react'
+import { GlobalProvider } from '../context/global-context'
+import Dashboard from '../components/dashboard'
 declare global {
 	interface Window {
 		buiCoin: any
@@ -10,9 +10,12 @@ declare global {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    
-  }, [])
-  return <GlobalProvider><Component {...pageProps} /></GlobalProvider>
+	return (
+		<GlobalProvider>
+			<Dashboard>
+				<Component {...pageProps} />
+			</Dashboard>
+		</GlobalProvider>
+	)
 }
 export default MyApp
