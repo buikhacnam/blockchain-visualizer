@@ -8,7 +8,7 @@ const BlockchainList = () => {
     return (
         <ChainListStyled>
             {state.blockchainState.chain.map((block: any, index: number) => {
-                return <BlockCard key={block.timestamp} block={block} blockNum={index}/>
+                return <BlockCard key={block.timestamp} timestamp={block.timestamp} block={block} blockNum={index}/>
             })}
         </ChainListStyled>
     )
