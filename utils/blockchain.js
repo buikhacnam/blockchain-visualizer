@@ -7,6 +7,7 @@ class Transaction {
 		this.fromAddress = fromAddress
 		this.toAddress = toAddress
 		this.amount = amount
+		this.timestamp = Date.now()
 	}
 
 	calculateHash() {

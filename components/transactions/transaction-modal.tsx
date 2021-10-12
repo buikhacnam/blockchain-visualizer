@@ -1,5 +1,6 @@
 import { Modal } from 'antd'
 import TransactionTable from './transaction-table'
+import styled from 'styled-components'
 const TransactionModal = ({
 	isModalVisible,
 	handleCancel,
@@ -7,8 +8,8 @@ const TransactionModal = ({
 	blockNum,
 }: any) => {
 	return (
-		<Modal
-			width={'100%'}
+		<StyledTransactionModal
+			width={'80%'}
 			centered
 			title={`Transactions inside Block ${blockNum}`}
 			footer={null}
@@ -16,8 +17,13 @@ const TransactionModal = ({
 			onCancel={handleCancel}
 		>
 			<TransactionTable timestamp={timestamp} />
-		</Modal>
+		</StyledTransactionModal>
 	)
 }
 
+const StyledTransactionModal = styled(Modal)`
+	.ant-modal-body {
+		overflow: auto;
+	}
+`
 export default TransactionModal

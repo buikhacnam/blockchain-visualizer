@@ -78,7 +78,9 @@ const NewTransaction = () => {
 				</Form.Item>
 			</Form>
 			<Button
-				onClick={() => {dispatch({type: 'mine_block'})}}
+				onClick={() => {
+					dispatch({type: 'mine_block'})
+				}}
 			>
 				Mine
 			</Button>

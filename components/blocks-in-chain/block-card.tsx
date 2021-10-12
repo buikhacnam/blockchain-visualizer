@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Card, Button } from 'antd'
 import TransactionModal from '../transactions/transaction-modal'
@@ -14,15 +14,19 @@ const BlockCard = ({ block, blockNum, timestamp }: any) => {
 	}
 	return (
 		<BlockCardStyled>
-			<Card title={`Block ${blockNum}`}>
+			<Card title={`Block ${blockNum}`} type='inner'>
 				<BlockCardContent>
-					<p>
-						Hash <span>{block.hash}</span>
+					<p title={block.hash}>
+						Hash <span>{block.hash.substring(0, 50) + '...'}</span>
 					</p>
-					<p>
-						Hash of previous block <span>{block.previousHash}</span>
+					<p  title={block.previousHash}>
+						Hash of previous block{' '}
+						<span>
+							{block.previousHash.length > 1
+								? block.previousHash.substring(0, 50) + '...'
+								: block.previousHash}
+						</span>
 					</p>
-					{blockNum === 0 && <br />}
 
 					<p>
 						Nonce <span>{block.nonce}</span>
@@ -32,7 +36,7 @@ const BlockCard = ({ block, blockNum, timestamp }: any) => {
 					</p>
 					<Button
 						disabled={blockNum === 0}
-						type="primary"
+						type='primary'
 						onClick={() => {
 							if (blockNum > 0) setIsModalVisible(true)
 						}}
@@ -42,7 +46,12 @@ const BlockCard = ({ block, blockNum, timestamp }: any) => {
 					</Button>
 				</BlockCardContent>
 			</Card>
-			<TransactionModal blockNum={blockNum} timestamp={timestamp} isModalVisible={isModalVisible} handleCancel={handleCancel}/>
+			<TransactionModal
+				blockNum={blockNum}
+				timestamp={timestamp}
+				isModalVisible={isModalVisible}
+				handleCancel={handleCancel}
+			/>
 		</BlockCardStyled>
 	)
 }
@@ -50,11 +59,12 @@ const BlockCard = ({ block, blockNum, timestamp }: any) => {
 export default BlockCard
 
 const BlockCardStyled = styled.div`
-	overflow-wrap: break-word;
-	
+	/* overflow-wrap: break-word; */
+	word-break: break-all;
+	display: inline-block;
 	span {
 		display: block;
-		font-size: 0.85em;
+		font-size: 0.7rem;
 		color: #8c8c8c;
 	}
 
@@ -62,6 +72,4 @@ const BlockCardStyled = styled.div`
 		color: unset !important;
 	}
 `
-const BlockCardContent = styled.div`
-	width: 250px;
-`
+const BlockCardContent = styled.div``

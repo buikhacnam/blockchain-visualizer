@@ -14,8 +14,13 @@ const columns = [
 
 			return (
 				<span>
-					<a>{text?.substring(0, 15) + '...'}</a><br/>
-                    {text === myWalletAddress ? <Tag style={{display: 'inline-block'}} color="green">My Wallet</Tag> : null}
+					<a>{text?.substring(0, 15) + '...'}</a>
+					<br />
+					{text === myWalletAddress ? (
+						<Tag style={{ display: 'inline-block' }} color='green'>
+							My Wallet
+						</Tag>
+					) : null}
 				</span>
 			)
 		},
@@ -24,13 +29,18 @@ const columns = [
 		title: 'To',
 		dataIndex: 'toAddress',
 		key: 'to',
-        render: (text: string) => {
+		render: (text: string) => {
 			if (!text) return <span>System</span>
 
 			return (
 				<span>
-					<a>{text?.substring(0, 15) + '...'}</a><br/>
-                    {text === myWalletAddress ? <Tag style={{display: 'inline-block'}} color="green">My Wallet</Tag> : null}
+					<a>{text?.substring(0, 15) + '...'}</a>
+					<br />
+					{text === myWalletAddress ? (
+						<Tag style={{ display: 'inline-block' }} color='green'>
+							My Wallet
+						</Tag>
+					) : null}
 				</span>
 			)
 		},
@@ -39,12 +49,14 @@ const columns = [
 		title: 'Amount',
 		dataIndex: 'amount',
 		key: 'amount',
+		render: (text: string) => <span>{text}</span>,
 	},
-	// {
-	// 	title: 'Timestamp',
-	// 	dataIndex: 'timestamp',
-	// 	key: 'timestamp',
-	// },
+	{
+		title: 'Timestamp',
+		dataIndex: 'timestamp',
+		key: 'timestamp',
+		render: (text: string) => <span>{text}</span>,
+	},
 	// {
 	//     title: 'Signature',
 	//     dataIndex: 'signature',
@@ -103,14 +115,13 @@ const TransactionTable = ({ timestamp }: any) => {
 	const transactionSource = blockSource.transactions
 	console.log('src', transactionSource)
 	return (
-		<TableStyled>
-			<Table columns={columns} dataSource={transactionSource} />
-		</TableStyled>
+		<TableWrapper>
+			<TableStyled columns={columns} dataSource={transactionSource} />
+		</TableWrapper>
 	)
 }
 
 export default TransactionTable
 
-const TableStyled = styled.div`
-	width: 100%;
-`
+const TableWrapper = styled.div``
+const TableStyled = styled(Table)``
