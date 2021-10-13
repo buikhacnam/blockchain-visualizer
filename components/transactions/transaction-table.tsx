@@ -13,8 +13,8 @@ const columns = [
 			if (!text) return <span>System</span>
 
 			return (
-				<span>
-					<a>{text?.substring(0, 15) + '...'}</a>
+				<span title={text}>
+					<a>{text?.length > 15 ? text?.substring(0, 15) + '...': text}</a>
 					<br />
 					{text === myWalletAddress ? (
 						<Tag style={{ display: 'inline-block' }} color='green'>
@@ -33,8 +33,8 @@ const columns = [
 			if (!text) return <span>System</span>
 
 			return (
-				<span>
-					<a>{text?.substring(0, 15) + '...'}</a>
+				<span title={text}>
+					<a>{text?.length > 15 ? text?.substring(0, 15) + '...': text}</a>
 					<br />
 					{text === myWalletAddress ? (
 						<Tag style={{ display: 'inline-block' }} color='green'>

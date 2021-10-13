@@ -36,12 +36,14 @@ class Transaction {
 }
 
 class Block {
-	constructor(timestamp, transactions, previousHash) {
+	constructor(timestamp, transactions, previousHash, previousColor) {
 		this.timestamp = timestamp
 		this.transactions = transactions
 		this.previousHash = previousHash
 		this.hash = this.calculateHash()
 		this.nonce = 0
+		this.color = this.getRandomColor()
+		this.previousColor = previousColor
 	}
 
 	calculateHash() {
@@ -71,6 +73,15 @@ class Block {
 		}
 		return true
 	}
+
+	getRandomColor() {
+		var letters = '0123456789ABCDEF';
+		var color = '#';
+		for (var i = 0; i < 6; i++) {
+		  color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
+	  }
 }
 
 class Blockchain {
@@ -82,7 +93,7 @@ class Blockchain {
 	}
 
 	createGenesisBlock() {
-		return new Block('1483228800000', 'Genesis block', '0')
+		return new Block('1483228800000', 'Genesis block', '0', '#B8B8B8')
 	}
 
 	getLatestBlock() {
@@ -100,7 +111,8 @@ class Blockchain {
 		const rewardTx = new Transaction(null, miningRewardAddress, this.miningReward)
 		this.pendingTransactions.push(rewardTx)
 		let prevHash = this.getLatestBlock().hash
-		let block = new Block(Date.now(), this.pendingTransactions, prevHash)
+		let prevColor = this.getLatestBlock().color
+		let block = new Block(Date.now(), this.pendingTransactions, prevHash, prevColor)
 		block.mineBlock(this.difficulty)
 
 		// console.log(

@@ -14,16 +14,19 @@ const BlockCard = ({ block, blockNum, timestamp }: any) => {
 	}
 	return (
 		<BlockCardStyled>
-			<Card title={`Block ${blockNum}`} type='inner'>
+			<Card title={`Block ${blockNum + 1}`}>
 				<BlockCardContent>
 					<p title={block.hash}>
-						Hash <span>{block.hash.substring(0, 50) + '...'}</span>
+						Hash{' '}
+						<span style={{ color: block.color }}>
+							{block.hash.substring(0, 30) + '...'}
+						</span>
 					</p>
-					<p  title={block.previousHash}>
+					<p title={block.previousHash}>
 						Hash of previous block{' '}
-						<span>
+						<span style={{ color: block.previousColor }}>
 							{block.previousHash.length > 1
-								? block.previousHash.substring(0, 50) + '...'
+								? block.previousHash.substring(0, 30) + '...'
 								: block.previousHash}
 						</span>
 					</p>
