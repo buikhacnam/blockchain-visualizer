@@ -14,7 +14,7 @@ const BlockCard = ({ block, blockNum, timestamp }: any) => {
 	}
 	return (
 		<BlockCardStyled>
-			<Card title={`Block ${blockNum + 1}`}>
+			<Card title={blockNum > 0? `Block ${blockNum + 1}`: `Block ${blockNum + 1} (Genesis)`}>
 				<BlockCardContent>
 					<p title={block.hash}>
 						Hash{' '}

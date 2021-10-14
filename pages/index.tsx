@@ -5,6 +5,8 @@ import styles from '../styles/Home.module.css'
 import {useBlockchain} from '../context/global-context'
 import { Blockchain } from '../utils/blockchain'
 import BlockchainList from '../components/blocks-in-chain/blockchain-list'
+import styled from 'styled-components'
+import { Button } from 'antd'
 
 const Home: NextPage = () => {
   const {state, dispatch} = useBlockchain()
@@ -18,10 +20,24 @@ const Home: NextPage = () => {
 
   
   return (
-    <div> 
+    <HomeStyled> 
         <BlockchainList />
-    </div>
+        <NewTransaction>
+          <Button
+            size='large'
+            type='primary'
+          >
+            Create Transaction
+          </Button>
+        </NewTransaction>
+    </HomeStyled>
   )
 }
 
+const HomeStyled = styled.div``
+
+const NewTransaction = styled.div`
+  text-align: center;
+  margin-top: 10px;
+`
 export default Home

@@ -1,17 +1,20 @@
 import React, { Children, useState } from 'react'
-import { Layout, Menu } from 'antd'
+import Link from 'next/link'
+import { Layout, Menu, Button } from 'antd'
 import {
 	MenuUnfoldOutlined,
 	MenuFoldOutlined,
+	EuroCircleOutlined,
 	UserOutlined,
 	VideoCameraOutlined,
 	UploadOutlined,
 } from '@ant-design/icons'
 import SiderDashboard from './sider/dashboard-sider'
+import styled from 'styled-components'
 
 const { Header, Sider, Content } = Layout
 
-export default function Dashboard({children}: { children: React.ReactNode }) {
+export default function Dashboard({ children }: { children: React.ReactNode }) {
 	const [collapsed, setCollapsed] = useState(false)
 
 	const toggle = () => {
@@ -22,24 +25,36 @@ export default function Dashboard({children}: { children: React.ReactNode }) {
 		<Layout>
 			<SiderDashboard toggle={toggle} collapsed={collapsed} />
 			<Layout className='site-layout'>
-				<Header
-					className='site-layout-background'
-					style={{ padding: 0 }}
-				>
+				<HeaderStyled className="site-layout-background" style={{ padding: 0 }}>
 					{collapsed ? (
-						<button className='trigger' onClick={toggle}>
-							open
-						</button>
+						<Button
+							style={{ margin: '0 10px 10px 10px' }}
+							className='trigger'
+							onClick={toggle}
+						>
+							<MenuUnfoldOutlined />
+						</Button>
 					) : (
-						<button className='trigger' onClick={toggle}>
-							close
-						</button>
+						<Button
+							style={{ margin: '0 10px 10px 10px' }}
+							className='trigger'
+							onClick={toggle}
+						>
+							<MenuFoldOutlined />
+						</Button>
 					)}
-				</Header>
-				<Content>
-					{children}
-				</Content>
+					<p className='logo-style'><EuroCircleOutlined />&nbsp;Bui Coin</p>
+				</HeaderStyled>
+				<Content style={{ height: '100vh' }}>{children}</Content>
 			</Layout>
 		</Layout>
 	)
 }
+
+const HeaderStyled = styled(Header)`
+	&.ant-layout-header {
+		background: #FFFFFF !important;
+		height: 50px !important;
+		line-height: 50px !important;
+	}
+`
