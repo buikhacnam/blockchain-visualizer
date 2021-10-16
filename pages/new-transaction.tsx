@@ -3,9 +3,10 @@ import { Form, Input, Button, Checkbox } from 'antd'
 import { Blockchain, Block, Transaction } from '../utils/blockchain'
 import Link from 'next/link'
 import { useEffect } from 'react'
-import { GlobalProvider, useBlockchain } from '../context/global-context'
+import { useBlockchain } from '../context/global-context'
 
 const NewTransaction = () => {
+	const [form] = Form.useForm()
 	const { state, dispatch, myWalletAddress } = useBlockchain()
 
 	useEffect(() => {
@@ -18,6 +19,7 @@ const NewTransaction = () => {
 
 	const onFinish = (transaction: any) => {
 		dispatch({ type: 'add_transaction', transaction })
+		form.resetFields()
 	}
 
 	const onFinishFailed = (errorInfo: any) => {
@@ -29,6 +31,7 @@ const NewTransaction = () => {
 			<Link href='/'>Home</Link>
 
 			<Form
+				form={form}
 				name='basic'
 				// labelCol={{ span: 8 }}
 				// wrapperCol={{ span: 16 }}
@@ -79,7 +82,7 @@ const NewTransaction = () => {
 			</Form>
 			<Button
 				onClick={() => {
-					dispatch({type: 'mine_block'})
+					dispatch({ type: 'mine_block' })
 				}}
 			>
 				Mine

@@ -22,5 +22,6 @@ const AlertContent = () => {
 }
 
 const AlertStyle = styled(Alert)`
+	/* margin-bottom: 20px; */
 `
 export default WelcomeAlert

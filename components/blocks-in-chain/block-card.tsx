@@ -65,6 +65,8 @@ const BlockCardStyled = styled.div`
 	/* overflow-wrap: break-word; */
 	word-break: break-all;
 	display: inline-block;
+	margin: 0 10px;
+
 	span {
 		display: block;
 		font-size: 0.7rem;
@@ -75,4 +77,5 @@ const BlockCardStyled = styled.div`
 		color: unset !important;
 	}
 `
-const BlockCardContent = styled.div``
+const BlockCardContent = styled.div`
+`

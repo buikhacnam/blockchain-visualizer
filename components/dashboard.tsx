@@ -22,7 +22,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
 	}
 
 	return (
-		<Layout>
+		<Layout style={{ height: '100vh' }}>
 			<SiderDashboard toggle={toggle} collapsed={collapsed} />
 			<Layout className='site-layout'>
 				<HeaderStyled className="site-layout-background" style={{ padding: 0 }}>
@@ -45,7 +45,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
 					)}
 					<p className='logo-style'><EuroCircleOutlined />&nbsp;Bui Coin</p>
 				</HeaderStyled>
-				<Content style={{ height: '100vh' }}>{children}</Content>
+				<Content>{children}</Content>
 			</Layout>
 		</Layout>
 	)

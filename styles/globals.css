@@ -1,29 +1,33 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.ant-layout {
+	/* background-color: #FFFFFF !important; */
 }
 
 .ant-layout-header {
-  background: #FFFFFF !important;
-  height: 50px !important;
-  line-height: 50px !important;
+	background: #ffffff !important;
+	height: 50px !important;
+	line-height: 50px !important;
 }
 
 .logo-style {
-  float: right;
+	float: right;
 	margin-right: 20px;
-  font-size: 1rem;
-  font-weight: 500;
+	font-size: 1rem;
+	font-weight: 500;
 }
