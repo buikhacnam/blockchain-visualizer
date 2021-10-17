@@ -186,14 +186,9 @@ class Blockchain {
 		return true
 	}
 
-	changeDifficulty(difficulty) {
+	changeSettings(difficulty, miningReward) {
 		this.difficulty = difficulty
-	}
-
-	changeMiningReward(miningReward) {
-		console.log(`mining reward has been changed to ${miningReward}`)
 		this.miningReward = miningReward
-		console.log(`mining reward has been changed to 2 ${this.miningReward}`)
 	}
 
 	getTransactionsOfAddress(address) {

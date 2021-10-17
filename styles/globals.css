@@ -19,7 +19,6 @@ a {
 .ant-layout {
 	/* background-color: #FFFFFF !important; */
 	height: 120vh;
-	width: unset !important;
 }
 
 .ant-layout-content {
@@ -62,8 +61,24 @@ p {
 	font-size: 1.5rem !important;
 }
 
+
+
 @media (max-width: 500px) {
-	.ant-layout-sider {
-		height: 180vh;
+	.ant-layout {
+		width: 650px !important;
 	}
 }
+
+.ant-layout-sider {
+	background-color: #ffffff !important;
+}
+
+@media (max-width: 500px) {
+	.ant-layout-sider {
+		height: 200vh;
+		background-color: #f0f2f5 !important;
+
+	}
+}
+
+.ant-menu {}

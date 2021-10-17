@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { Blockchain, Transaction, Block } from '../utils/blockchain'
+import {message} from 'antd'
 const EC = require('elliptic').ec
 const ec = new EC('secp256k1')
 const myWalletAddress = '04eac26a0bf07b189615a98788ac471aa6dda262b7fa5b80772347684e972d00eb11e9b53e46f4a664bc7490899e90a9e88aae559d228c4a650feca4294fe47863'
@@ -51,15 +52,9 @@ const reducer = (state: State, action: Action) => {
 			}
 		}
 
-		case 'change_difficulty' : {
+		case 'change_settings': {
 			return {
-				blockchainState: blockchain.changeDifficulty(action.difficulty),
-			}
-		}
-
-		case 'change_mining_reward' : {
-			return {
-				blockchainState: blockchain.changeMiningReward(action.miningReward),
+				blockchainState: blockchain.changeSettings(action.difficulty, action.miningReward),
 			}
 		}
 
