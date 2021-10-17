@@ -28,9 +28,9 @@ const SettingsPage = () => {
             <h1>Settings</h1>
             <p>Set up the amount of mining rewards and difficulty levels</p>
             <Divider />
-			<Form layout='inline' onFinish={onFinish}>
-				<Form.Item name='miningReward' label='Mining Reward'>
-					<span>
+			<Form onFinish={onFinish} layout='vertical'>
+				<Form.Item name='miningReward' label='Mining Reward / Difficulty'>
+					
 						<Input
 							value={settings.miningReward}
 							type='number'
@@ -48,7 +48,7 @@ const SettingsPage = () => {
 							value={settings.difficulty}
 							style={{
 								width: 200,
-								margin: '0 8px',
+								marginTop: 5
 							}}
 							onChange={value => {
 								setSettings({ ...settings, difficulty: value })
@@ -60,7 +60,6 @@ const SettingsPage = () => {
 							<Option value={4}>Difficulty - Level 4</Option>
 							<Option value={5}>Difficulty - Level 5</Option>
 						</Select>
-					</span>
 				</Form.Item>
 				<Form.Item>
 					<Button type='primary' htmlType='submit' onClick={onFinish}>

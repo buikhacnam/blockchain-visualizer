@@ -20,7 +20,7 @@ const MyWalletPage = () => {
 			<p>
 				<b>Address</b>
 			</p>
-			<span>{myWalletAddress}</span>
+			<span>04eac26a0bf07b189615a98788ac471aa6dda262b7fa5b80772347684e972d00eb11e9<br/>b53e46f4a664bc7490899e90a9e88aae559d228c4a650feca4294fe47863</span>
 			<br />
 			<br />
 			<p>

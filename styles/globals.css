@@ -1,5 +1,6 @@
 html,
 body {
+	background-color: #f0f2f5;
 	padding: 0;
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -18,6 +19,7 @@ a {
 .ant-layout {
 	/* background-color: #FFFFFF !important; */
 	height: 120vh;
+	width: unset !important;
 }
 
 .ant-layout-content {
@@ -43,7 +45,7 @@ a {
 
 .page-wrapper {
 	margin: 20px;
-	
+	min-width: 400px;
 }
 
 h1 {
@@ -58,4 +60,10 @@ p {
 
 .ant-spin {
 	font-size: 1.5rem !important;
+}
+
+@media (max-width: 500px) {
+	.ant-layout-sider {
+		height: 180vh;
+	}
 }
