@@ -23,7 +23,7 @@ export default function SiderDashboard({toggle, collapsed}: any) {
 					<Link href='/new-transaction'>New Transaction</Link>
 				</Menu.Item>
 				<Menu.Item key='3' icon={<UploadOutlined />}>
-					<Link href='/pending-transaction'>Pending Transaction</Link>
+					<Link href='/mine'>Pending Transaction</Link>
 				</Menu.Item>
 				<Menu.Item key='4' icon={<UploadOutlined />}>
 					<Link href='/setting'>Settings</Link>

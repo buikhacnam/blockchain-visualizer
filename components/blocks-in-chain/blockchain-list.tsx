@@ -34,7 +34,7 @@ const ChainListWrapper = styled.div`
 `
 
 const ChainListStyled = styled.div`
-    padding: 30px 10px;
+    padding: 40px 10px;
 	overflow-x: scroll;
 	overflow-y: hidden;
 	white-space: nowrap;

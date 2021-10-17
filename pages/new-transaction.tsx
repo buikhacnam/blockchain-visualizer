@@ -1,11 +1,16 @@
 // domain.com/new-transaction
-import { Form, Input, Button, Checkbox } from 'antd'
-import { Blockchain, Block, Transaction } from '../utils/blockchain'
+import { Form, Input, Button, Divider, message } from 'antd'
+import { Blockchain } from '../utils/blockchain'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { useBlockchain } from '../context/global-context'
+import styled from 'styled-components'
+import { SearchOutlined } from '@ant-design/icons'
+{
+	/* <Link href='/'>Home</Link> */
+}
 
-const NewTransaction = () => {
+const NewTransactionPage = () => {
 	const [form] = Form.useForm()
 	const { state, dispatch, myWalletAddress } = useBlockchain()
 
@@ -20,16 +25,17 @@ const NewTransaction = () => {
 	const onFinish = (transaction: any) => {
 		dispatch({ type: 'add_transaction', transaction })
 		form.resetFields()
+		message.success('Transaction has been added to pending successfully!')
 	}
 
 	const onFinishFailed = (errorInfo: any) => {
 		console.log('Failed:', errorInfo)
 	}
 	return (
-		<div>
-			<h1>New Transaction</h1>
-			<Link href='/'>Home</Link>
-
+		<NewTransactionWrapper className='page-wrapper'>
+			<h1>Create Transaction</h1>
+			<p>Transfer money to others</p>
+			<Divider />
 			<Form
 				form={form}
 				name='basic'
@@ -39,6 +45,12 @@ const NewTransaction = () => {
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}
 				autoComplete='off'
+				layout='vertical'
+				style={{
+					marginTop: '20px',
+					backgroundColor: '#fff',
+					padding: '20px',
+				}}
 			>
 				<Form.Item
 					label='My Wallet Address'
@@ -74,21 +86,26 @@ const NewTransaction = () => {
 					<Input type='number' />
 				</Form.Item>
 
-				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-					<Button type='primary' htmlType='submit'>
-						Create Transaction
+				<Form.Item>
+					<Button
+						type='primary'
+						htmlType='submit'
+						style={{ marginTop: '10px' }}
+					>
+						Sign and Create Transaction
 					</Button>
 				</Form.Item>
 			</Form>
-			<Button
-				onClick={() => {
-					dispatch({ type: 'mine_block' })
-				}}
-			>
-				Mine
-			</Button>
-		</div>
+			<Divider />
+			<div style={{}}>
+				<p>Let&apos;s go ahead and mine a block now!</p>
+				<Link href='/mine' passHref>
+					<Button>Start Mining</Button>
+				</Link>
+			</div>
+		</NewTransactionWrapper>
 	)
 }
 
-export default NewTransaction
+const NewTransactionWrapper = styled.div``
+export default NewTransactionPage

@@ -33,7 +33,7 @@ const Home: NextPage = () => {
 }
 
 const HomeStyled = styled.div`
-  background-color: #f0f2f5;
+  /* background-color: #f0f2f5; */
 `
 
 const NewTransaction = styled.div`

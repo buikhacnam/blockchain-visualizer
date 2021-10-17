@@ -17,6 +17,11 @@ a {
 
 .ant-layout {
 	/* background-color: #FFFFFF !important; */
+	height: 120vh;
+}
+
+.ant-layout-content {
+	height: 100vh;
 }
 
 .ant-layout-header {
@@ -30,4 +35,22 @@ a {
 	margin-right: 20px;
 	font-size: 1rem;
 	font-weight: 500;
+}
+
+.ant-alert-banner {
+	margin-top: 30px !important;
+}
+
+.page-wrapper {
+	margin: 20px;
+	
+}
+
+h1 {
+	font-size: 2rem;
+	margin-bottom: 4px;
+}
+
+p {
+	font-size: 1rem;
 }
