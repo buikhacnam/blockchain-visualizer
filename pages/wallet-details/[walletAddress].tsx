@@ -23,19 +23,3 @@ const WalletDetailsPage = () => {
 }
 
 export default WalletDetailsPage
-
-// export async function getStaticPaths() {
-//     const paths:any = []
-//     const addresses = window.buiCoin.getAllAddresses()
-//     addresses.forEach((add: any) => {
-//         paths.push({
-//             params: {
-//                 address: add
-//             }
-//         })
-//     })
-//     return {
-//         paths,
-//         fallback: 'blocking'
-//     }
-// }

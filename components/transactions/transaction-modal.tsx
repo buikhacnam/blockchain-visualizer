@@ -9,7 +9,7 @@ const TransactionModal = ({
 }: any) => {
 	return (
 		<StyledTransactionModal
-			width={'80%'}
+			width={600}
 			centered
 			title={`Transactions inside Block ${blockNum}`}
 			footer={null}

@@ -61,8 +61,6 @@ p {
 	font-size: 1.5rem !important;
 }
 
-
-
 @media (max-width: 500px) {
 	.ant-layout {
 		width: 650px !important;
@@ -77,8 +75,13 @@ p {
 	.ant-layout-sider {
 		height: 200vh;
 		background-color: #f0f2f5 !important;
-
+	}
+}
+@media (max-width: 500px) {
+	.ant-modal-content {
+		width: 450px !important;
 	}
 }
 
-.ant-menu {}
+.ant-menu {
+}
