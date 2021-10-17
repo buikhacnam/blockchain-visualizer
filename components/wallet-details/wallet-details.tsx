@@ -20,7 +20,7 @@ const WalletDetails = ({address}: any) => {
 			<p>
 				<b>Address</b>
 			</p>
-			<span>{address.length > 30? address.substring(0, 30) + '...' : address}</span>
+			<span>{address?.length > 30? address.substring(0, 30) + '...' : address}</span>
 			<br />
 			<br />
 			<p>
