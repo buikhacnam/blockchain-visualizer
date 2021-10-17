@@ -20,7 +20,6 @@ const NewTransactionPage = () => {
 		if (!window.buiCoin) {
 			window.buiCoin = new Blockchain()
 		}
-		console.log('run effect')
 		dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
 	}, [])
 

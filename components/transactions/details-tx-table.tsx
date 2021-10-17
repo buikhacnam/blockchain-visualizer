@@ -6,8 +6,19 @@ import { useBlockchain } from '../../context/global-context'
 import { Blockchain } from '../../utils/blockchain'
 import Link from 'next/link'
 
+
 const DetailsTxTable = ({address}: any) => {
-	const pendingTx = window.buiCoin.getTransactionsOfAddress(address)
+	const { state, dispatch, myWalletAddress } = useBlockchain()
+
+	useEffect(() => {
+		if (!window.buiCoin) {
+			window.buiCoin = new Blockchain()
+		}
+		dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
+	}, [])
+
+	const pendingTx = state.blockchainState?.getTransactionsOfAddress(address)
+
 	if (!pendingTx?.length)
 		return (
 			<Empty>

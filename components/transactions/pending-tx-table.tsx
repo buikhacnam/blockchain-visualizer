@@ -8,14 +8,13 @@ import Link from 'next/link'
 
 const PendingTxTable = () => {
 	const { state, dispatch } = useBlockchain()
-	// useEffect(() => {
-	// 	if (!window.buiCoin) {
-	// 		window.buiCoin = new Blockchain()
-	// 	}
-	// 	console.log('run effect')
-	// 	dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
-	// }, [])
-	const pendingTx = state.blockchainState?.pendingTransactions || window.buiCoin.pendingTransactions
+	useEffect(() => {
+		if (!window.buiCoin) {
+			window.buiCoin = new Blockchain()
+		}
+		dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
+	}, [])
+	const pendingTx = state.blockchainState?.pendingTransactions
 	if (!pendingTx?.length)
 		return (
 			<Empty>

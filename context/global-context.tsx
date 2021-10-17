@@ -21,7 +21,7 @@ const reducer = (state: State, action: Action) => {
 	switch (action.type) {
 		case 'get_blockchain': {
 			return {
-				blockchainState: action.blocks,
+				blockchainState: blockchain,
 			}
 		}
 
