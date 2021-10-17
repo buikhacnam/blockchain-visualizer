@@ -19,7 +19,9 @@ const Home: NextPage = () => {
 	}, [])
 
 	return (
-		<HomeStyled>
+		<HomeStyled className='page-wrapper'>
+			<h1>Blocks in Chain</h1>
+			<Divider />
 			<BlockchainList />
 			{/* <NewTransaction>
           <Button
@@ -33,11 +35,11 @@ const Home: NextPage = () => {
 }
 
 const HomeStyled = styled.div`
-  /* background-color: #f0f2f5; */
+	/* background-color: #f0f2f5; */
 `
 
 const NewTransaction = styled.div`
-  background-color: #ffffff;
+	background-color: #ffffff;
 	text-align: center;
 	padding-top: 30px;
 `

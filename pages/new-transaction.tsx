@@ -5,12 +5,14 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { useBlockchain } from '../context/global-context'
 import styled from 'styled-components'
-import { SearchOutlined } from '@ant-design/icons'
+import {useRouter} from 'next/router'
+
 {
 	/* <Link href='/'>Home</Link> */
 }
 
 const NewTransactionPage = () => {
+	const router = useRouter()
 	const [form] = Form.useForm()
 	const { state, dispatch, myWalletAddress } = useBlockchain()
 
@@ -26,6 +28,7 @@ const NewTransactionPage = () => {
 		dispatch({ type: 'add_transaction', transaction })
 		form.resetFields()
 		message.success('Transaction has been added to pending successfully!')
+		router.push('/mine')
 	}
 
 	const onFinishFailed = (errorInfo: any) => {

@@ -43,7 +43,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
 							<MenuFoldOutlined />
 						</Button>
 					)}
-					<p className='logo-style'><EuroCircleOutlined />&nbsp;Bui Coin</p>
+					<p className='logo-style'><EuroCircleOutlined style={{color: '#d3af37'}}/>&nbsp;Bui Coin</p>
 				</HeaderStyled>
 				<Content style={{height: '100%'}}>{children}</Content>
 			</Layout>

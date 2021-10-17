@@ -14,7 +14,7 @@ const BlockCard = ({ block, blockNum, timestamp }: any) => {
 	}
 	return (
 		<BlockCardStyled>
-			<Card title={blockNum > 0? `Block ${blockNum + 1}`: `Block ${blockNum + 1} (Genesis)`}>
+			<Card title={blockNum > 0? `Block ${blockNum + 1}`: `Block ${blockNum + 1} (Genesis)`} hoverable style={{cursor: 'default'}}>
 				<BlockCardContent>
 					<p title={block.hash}>
 						Hash{' '}

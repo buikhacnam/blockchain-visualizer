@@ -38,7 +38,7 @@ a {
 }
 
 .ant-alert-banner {
-	margin-top: 30px !important;
+	/* margin-top: 30px !important; */
 }
 
 .page-wrapper {
@@ -53,4 +53,8 @@ h1 {
 
 p {
 	font-size: 1rem;
+}
+
+.ant-spin {
+	font-size: 1.5rem !important;
 }
