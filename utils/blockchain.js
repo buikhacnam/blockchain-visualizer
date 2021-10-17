@@ -185,6 +185,49 @@ class Blockchain {
 
 		return true
 	}
+
+	changeDifficulty(difficulty) {
+		this.difficulty = difficulty
+	}
+
+	changeMiningReward(miningReward) {
+		console.log(`mining reward has been changed to ${miningReward}`)
+		this.miningReward = miningReward
+		console.log(`mining reward has been changed to 2 ${this.miningReward}`)
+	}
+
+	getTransactionsOfAddress(address) {
+		let transactions = []
+		for (const block of this.chain) {
+			for (const trans of block.transactions) {
+				if (trans.fromAddress === address || trans.toAddress === address) {
+					transactions.push(trans)
+				}
+				
+			}
+		}
+		return transactions
+	}
+
+	getAllAddresses() {
+		let address = []
+		let seen = {}
+
+		for (const block of this.chain) {
+			for (const trans of block.transactions) {
+				if (!seen[trans.fromAddress]) {
+					address.push(fromAddress)
+					seen[trans.fromAddress] = 1
+				}
+				else if (!seen[trans.toAddress]) {
+					address.push(toAddress)
+					seen[trans.toAddress] = 1
+				}
+				
+			}
+		}
+		return address
+	}
 }
 
 module.exports = {

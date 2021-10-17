@@ -48,11 +48,12 @@ a {
 
 h1 {
 	font-size: 2rem;
-	margin-bottom: 4px;
+	margin-bottom: 8px !important;
 }
 
 p {
 	font-size: 1rem;
+	margin-bottom: 4px !important;
 }
 
 .ant-spin {

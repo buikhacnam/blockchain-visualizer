@@ -6,16 +6,8 @@ import { useBlockchain } from '../../context/global-context'
 import { Blockchain } from '../../utils/blockchain'
 import Link from 'next/link'
 
-const PendingTxTable = () => {
-	const { state, dispatch } = useBlockchain()
-	// useEffect(() => {
-	// 	if (!window.buiCoin) {
-	// 		window.buiCoin = new Blockchain()
-	// 	}
-	// 	console.log('run effect')
-	// 	dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
-	// }, [])
-	const pendingTx = state.blockchainState?.pendingTransactions || window.buiCoin.pendingTransactions
+const DetailsTxTable = ({address}: any) => {
+	const pendingTx = window.buiCoin.getTransactionsOfAddress(address)
 	if (!pendingTx?.length)
 		return (
 			<Empty>
@@ -31,7 +23,7 @@ const PendingTxTable = () => {
 	)
 }
 
-export default PendingTxTable
+export default DetailsTxTable
 
 const TableWrapper = styled.div`
 	margin-top: 10px;

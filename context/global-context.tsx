@@ -51,6 +51,18 @@ const reducer = (state: State, action: Action) => {
 			}
 		}
 
+		case 'change_difficulty' : {
+			return {
+				blockchainState: blockchain.changeDifficulty(action.difficulty),
+			}
+		}
+
+		case 'change_mining_reward' : {
+			return {
+				blockchainState: blockchain.changeMiningReward(action.miningReward),
+			}
+		}
+
 		default: {
 			return state
 		}

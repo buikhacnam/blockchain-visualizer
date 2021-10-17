@@ -34,7 +34,6 @@ const MinePage = () => {
 				</Spin>
 			) : (
 				<MinePageWrapper className='page-wrapper'>
-					<h1>Start Mining A BLock</h1>
 					<MineButtonWrapper>
 						<Button
 							type='primary'
@@ -42,11 +41,12 @@ const MinePage = () => {
 							onClick={onChange}
 							style={{ marginTop: '10px' }}
 						>
-							Mine
+							Mine A BLock
 						</Button>
 					</MineButtonWrapper>
 					<Divider />
 					<h1>Pending Transactions</h1>
+					<p>Pending transactions will be added to the next block once it is mined</p>
 					<PendingTxTable />
 				</MinePageWrapper>
 			)}
