@@ -1,20 +1,16 @@
-// domain.com/new-transaction
 import { Form, Input, Button, Divider, message } from 'antd'
 import { Blockchain } from '../utils/blockchain'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useBlockchain } from '../context/global-context'
 import styled from 'styled-components'
-import {useRouter} from 'next/router'
-
-{
-	/* <Link href='/'>Home</Link> */
-}
+import { useRouter } from 'next/router'
 
 const NewTransactionPage = () => {
 	const router = useRouter()
 	const [form] = Form.useForm()
-	const { state, dispatch, myWalletAddress } = useBlockchain()
+	const {  dispatch, myWalletAddress } = useBlockchain()
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
 		if (!window.buiCoin) {
@@ -24,10 +20,17 @@ const NewTransactionPage = () => {
 	}, [])
 
 	const onFinish = (transaction: any) => {
-		dispatch({ type: 'add_transaction', transaction })
-		form.resetFields()
-		message.success('Transaction has been added to pending successfully!')
-		router.push('/mine')
+		setLoading(true)
+
+		setTimeout(() => {
+			dispatch({ type: 'add_transaction', transaction })
+			form.resetFields()
+			setLoading(false)
+			message.success(
+				'Transaction has been added to pending successfully!'
+			)
+			router.push('/mine')
+		}, 2000)
 	}
 
 	const onFinishFailed = (errorInfo: any) => {
@@ -41,8 +44,6 @@ const NewTransactionPage = () => {
 			<Form
 				form={form}
 				name='basic'
-				// labelCol={{ span: 8 }}
-				// wrapperCol={{ span: 16 }}
 				initialValues={{ remember: true }}
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}
@@ -57,7 +58,6 @@ const NewTransactionPage = () => {
 				<Form.Item
 					label='My Wallet Address'
 					name='myaddress'
-					rules={[{}]}
 				>
 					<Input disabled defaultValue={myWalletAddress} />
 				</Form.Item>
@@ -93,6 +93,8 @@ const NewTransactionPage = () => {
 						type='primary'
 						htmlType='submit'
 						style={{ marginTop: '10px' }}
+						loading={loading}
+						disabled={loading}
 					>
 						Sign and Create Transaction
 					</Button>
