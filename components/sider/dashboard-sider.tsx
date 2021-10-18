@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Layout, Menu } from 'antd'
 import {
 	UserOutlined,
@@ -11,6 +11,12 @@ import Link from 'next/link'
 const { Header, Sider, Content } = Layout
 
 export default function SiderDashboard({ toggle, collapsed }: any) {
+	const [selectedKey, setSelectedKey] = useState('/')
+	
+	useEffect(() => {
+		setSelectedKey(window.location.pathname)
+	})
+	
 	return (
 		<Sider
 			trigger={null}
@@ -21,20 +27,24 @@ export default function SiderDashboard({ toggle, collapsed }: any) {
 			
 		>
 			<div className='logo' />
-			<Menu mode='inline' defaultSelectedKeys={['1']}>
-				<Menu.Item key='1' icon={<BlockOutlined />}>
-					<Link href='/'>Blocks in Chain</Link>
+			<Menu 
+				mode='inline' 
+				defaultSelectedKeys={['1']} 
+				selectedKeys={[selectedKey]}	
+			>
+				<Menu.Item key='/' icon={<BlockOutlined />}>
+					<Link href='/'>Blocks on Chain</Link>
 				</Menu.Item>
-				<Menu.Item key='2' icon={<TransactionOutlined />}>
+				<Menu.Item key='/new-transaction' icon={<TransactionOutlined />}>
 					<Link href='/new-transaction'>New Transaction</Link>
 				</Menu.Item>
-				<Menu.Item key='3' icon={<GoldOutlined />}>
+				<Menu.Item key='/mine' icon={<GoldOutlined />}>
 					<Link href='/mine'>Pending</Link>
 				</Menu.Item>
-				<Menu.Item key='4' icon={<SettingOutlined />}>
+				<Menu.Item key='/settings' icon={<SettingOutlined />}>
 					<Link href='/settings'>Settings</Link>
 				</Menu.Item>
-				<Menu.Item key='5' icon={<UserOutlined />}>
+				<Menu.Item key='/my-wallet' icon={<UserOutlined />}>
 					<Link href='/my-wallet'>My Wallet</Link>
 				</Menu.Item>
 			</Menu>

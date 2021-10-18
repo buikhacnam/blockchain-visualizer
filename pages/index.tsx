@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
 	return (
 		<HomeStyled className='page-wrapper'>
-			<h1>Blocks in Chain</h1>
+			<h1>Blocks on Chain</h1>
 			<Divider />
 			<BlockchainList />
 		</HomeStyled>

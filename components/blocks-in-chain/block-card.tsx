@@ -19,14 +19,14 @@ const BlockCard = ({ block, blockNum, timestamp }: any) => {
 					<p title={block.hash}>
 						Hash{' '}
 						<span style={{ color: block.color }}>
-							{block.hash.substring(0, 40) + '...'}
+							{block.hash.substring(0, 50) + '...'}
 						</span>
 					</p>
 					<p title={block.previousHash}>
 						Hash of previous block{' '}
 						<span style={{ color: block.previousColor }}>
 							{block.previousHash.length > 1
-								? block.previousHash.substring(0, 40) + '...'
+								? block.previousHash.substring(0, 50) + '...'
 								: block.previousHash}
 						</span>
 					</p>
