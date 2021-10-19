@@ -4,11 +4,8 @@ import { useBlockchain } from '../../context/global-context'
 import DetailsTxTable from '../transactions/details-tx-table'
 import { Blockchain } from '../../utils/blockchain'
 
-interface IWalletDetailsProps {
-	address: string
-}
-const WalletDetails: React.FC<IWalletDetailsProps> = ({address}) => {
-	const { state, dispatch, myWalletAddress } = useBlockchain()
+const WalletDetails = ({address}: any) => {
+	const { state, dispatch } = useBlockchain()
 
 	useEffect(() => {
 		if (!window.buiCoin) {
