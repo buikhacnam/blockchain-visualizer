@@ -7,6 +7,9 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 
+message.config({
+	duration: 7
+})
 const NewTransactionPage: NextPage = () => {
 	const router = useRouter()
 	const [form] = Form.useForm()
@@ -28,10 +31,10 @@ const NewTransactionPage: NextPage = () => {
 			form.resetFields()
 			setLoading(false)
 			message.success(
-				'Transaction has been added to pending successfully!'
+				'Transaction has been created successfully! Let\'s wait for the block to be mined'
 			)
 			router.push('/mine')
-		}, 2000)
+		}, 2500)
 	}
 
 	const onFinishFailed = (errorInfo: any) => {

@@ -41,6 +41,7 @@ const BlockCard: React.FC<BlockCardProps> = ({ block, blockNum, timestamp }) => 
 						Timestamp <span>{block.timestamp}</span>
 					</p>
 					<Button
+						style={{ marginTop: '10px' }}
 						disabled={blockNum === 0}
 						type='primary'
 						onClick={() => {

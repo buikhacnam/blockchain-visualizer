@@ -37,6 +37,10 @@ a {
 	font-weight: 500;
 }
 
+.logo-style:hover {
+	cursor: pointer;
+}
+
 .ant-alert-banner {
 	margin-bottom: 40px !important;
 }

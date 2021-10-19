@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons'
 import SiderDashboard from './sider/dashboard-sider'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 const { Header, Content } = Layout
 
@@ -42,10 +43,12 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
 							<MenuFoldOutlined />
 						</Button>
 					)}
-					<p className='logo-style'>
-						<EuroCircleOutlined style={{ color: '#d3af37' }} />
-						&nbsp;Bui Coin
-					</p>
+					<Link href='/' passHref>
+						<p className='logo-style'>
+							<EuroCircleOutlined style={{ color: '#d3af37' }} />
+							&nbsp;Bui Coin
+						</p>
+					</Link>
 				</HeaderStyled>
 				<Content style={{ height: '100%' }}>{children}</Content>
 			</Layout>
