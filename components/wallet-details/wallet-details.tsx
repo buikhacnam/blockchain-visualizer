@@ -26,7 +26,7 @@ const WalletDetails = ({address}: any) => {
 			<p>
 				<b>Balance</b>
 			</p>
-			<p>{state.blockchainState?.getBalanceOfAddress(address)}</p>
+			<p>{state?.blockchainState?.getBalanceOfAddress(address)}</p>
 			<Divider />
 			<h1>Transactions</h1>
             <DetailsTxTable address={address} />
