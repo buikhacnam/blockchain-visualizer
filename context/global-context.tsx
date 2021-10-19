@@ -13,7 +13,7 @@ interface BlockChainInterface {
 	pendingTransactions: Transaction[],
 	difficulty: number,
 	miningReward: number,
-	getBalanceOfAddress: (address: any) => number,
+	getBalanceOfAddress: any,
 	isChainValid: () => boolean,
 	addTransaction: (transaction: Transaction) => BlockChainInterface,
 	minePendingTransactions: (miningRewardAddress: string) => BlockChainInterface,
