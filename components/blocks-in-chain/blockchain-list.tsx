@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { useBlockchain } from '../../context/global-context'
 import BlockCard from './block-card'
+
 const BlockchainList = () => {
-	const { state, dispatch } = useBlockchain()
+	const { state } = useBlockchain()
 	if (!state?.blockchainState?.chain?.length) return <div>Loading...</div>
 	return (
 		<ChainListWrapper>

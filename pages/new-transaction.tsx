@@ -5,8 +5,9 @@ import { useEffect, useState } from 'react'
 import { useBlockchain } from '../context/global-context'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import type { NextPage } from 'next'
 
-const NewTransactionPage = () => {
+const NewTransactionPage: NextPage = () => {
 	const router = useRouter()
 	const [form] = Form.useForm()
 	const {  dispatch, myWalletAddress } = useBlockchain()

@@ -5,7 +5,7 @@ import { useBlockchain } from '../../context/global-context'
 
 
 const TransactionTable = ({ timestamp }: any) => {
-	const { state, myWalletAddress } = useBlockchain()
+	const { state } = useBlockchain()
 	const blockSource = state.blockchainState.chain.find(
 		(block: any) => block.timestamp === timestamp
 	)

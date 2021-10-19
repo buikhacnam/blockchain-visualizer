@@ -3,9 +3,9 @@ import { useRouter } from 'next/router'
 import { Blockchain } from '../../utils/blockchain'
 import { useEffect } from 'react'
 import { useBlockchain } from '../../context/global-context'
-import styled from 'styled-components'
+import type { NextPage } from 'next'
 
-const WalletDetailsPage = () => {
+const WalletDetailsPage: NextPage = () => {
 	const router = useRouter()
 	const { state, dispatch } = useBlockchain()
 

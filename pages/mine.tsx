@@ -6,9 +6,11 @@ import { useBlockchain } from '../context/global-context'
 import styled from 'styled-components'
 import PendingTxTable from '../components/transactions/pending-tx-table'
 import {useRouter} from 'next/router'
+import type { NextPage } from 'next'
 
 
-const MinePage = () => {
+
+const MinePage: NextPage = () => {
 	const {  dispatch } = useBlockchain()
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()

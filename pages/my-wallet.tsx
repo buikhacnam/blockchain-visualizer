@@ -3,8 +3,9 @@ import { Divider } from 'antd'
 import { useBlockchain } from '../context/global-context'
 import MyTxTable from '../components/transactions/details-tx-table'
 import { Blockchain } from '../utils/blockchain'
+import type { NextPage } from 'next'
 
-const MyWalletPage = () => {
+const MyWalletPage: NextPage = () => {
 	const { state, dispatch, myWalletAddress } = useBlockchain()
 	
 	useEffect(() => {

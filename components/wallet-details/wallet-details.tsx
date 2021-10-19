@@ -4,7 +4,10 @@ import { useBlockchain } from '../../context/global-context'
 import DetailsTxTable from '../transactions/details-tx-table'
 import { Blockchain } from '../../utils/blockchain'
 
-const WalletDetails = ({address}: any) => {
+interface IWalletDetailsProps {
+	address: string
+}
+const WalletDetails: React.FC<IWalletDetailsProps> = ({address}) => {
 	const { state, dispatch, myWalletAddress } = useBlockchain()
 
 	useEffect(() => {

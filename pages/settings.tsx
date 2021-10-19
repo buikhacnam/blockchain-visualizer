@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Form, Input, Select, Button, Divider, message } from 'antd'
 import { useBlockchain } from '../context/global-context'
 import { Blockchain } from '../utils/blockchain'
+import type { NextPage } from 'next'
 
 const { Option } = Select
 message.config({
 	maxCount: 1,
 })
-const SettingsPage = () => {
+const SettingsPage: NextPage = () => {
 	const { state, dispatch, myWalletAddress } = useBlockchain()
 	const [settings, setSettings] = useState({
 		difficulty: state.blockchainState?.difficulty,

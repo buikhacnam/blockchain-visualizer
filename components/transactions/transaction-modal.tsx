@@ -1,12 +1,19 @@
 import { Modal } from 'antd'
 import TransactionTable from './transaction-table'
 import styled from 'styled-components'
-const TransactionModal = ({
+
+interface TransactionModalProps {
+	isModalVisible: boolean
+	handleCancel: () => void
+	timestamp: number
+	blockNum: number
+}
+const TransactionModal: React.FC<TransactionModalProps> = ({
 	isModalVisible,
 	handleCancel,
 	timestamp,
 	blockNum,
-}: any) => {
+}) => {
 	return (
 		<StyledTransactionModal
 			width={'80%'}

@@ -4,9 +4,12 @@ import { Card, Button } from 'antd'
 import TransactionModal from '../transactions/transaction-modal'
 
 interface BlockCardProps {
-	blockNum: number
+	blockNum: number,
+	timestamp: number,
+	block: any
 }
-const BlockCard = ({ block, blockNum, timestamp }: any) => {
+
+const BlockCard: React.FC<BlockCardProps> = ({ block, blockNum, timestamp }) => {
 	const [isModalVisible, setIsModalVisible] = useState(false)
 
 	const handleCancel = () => {

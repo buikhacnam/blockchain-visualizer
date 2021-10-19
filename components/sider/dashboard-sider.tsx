@@ -8,15 +8,20 @@ import {
 	SettingOutlined,
 } from '@ant-design/icons'
 import Link from 'next/link'
-const { Header, Sider, Content } = Layout
+const { Sider } = Layout
 
-export default function SiderDashboard({ toggle, collapsed }: any) {
+interface SiderProps {
+	collapsed: boolean
+	toggle: () => void
+}
+
+const SiderDashboard: React.FC<SiderProps> = ({ toggle, collapsed }) => {
 	const [selectedKey, setSelectedKey] = useState('/')
-	
+
 	useEffect(() => {
 		setSelectedKey(window.location.pathname)
 	})
-	
+
 	return (
 		<Sider
 			trigger={null}
@@ -24,18 +29,20 @@ export default function SiderDashboard({ toggle, collapsed }: any) {
 			collapsed={collapsed}
 			collapsedWidth={50}
 			width={180}
-			
 		>
 			<div className='logo' />
-			<Menu 
-				mode='inline' 
-				defaultSelectedKeys={['1']} 
-				selectedKeys={[selectedKey]}	
+			<Menu
+				mode='inline'
+				defaultSelectedKeys={['1']}
+				selectedKeys={[selectedKey]}
 			>
 				<Menu.Item key='/' icon={<BlockOutlined />}>
 					<Link href='/'>Blocks on Chain</Link>
 				</Menu.Item>
-				<Menu.Item key='/new-transaction' icon={<TransactionOutlined />}>
+				<Menu.Item
+					key='/new-transaction'
+					icon={<TransactionOutlined />}
+				>
 					<Link href='/new-transaction'>New Transaction</Link>
 				</Menu.Item>
 				<Menu.Item key='/mine' icon={<GoldOutlined />}>
@@ -51,3 +58,5 @@ export default function SiderDashboard({ toggle, collapsed }: any) {
 		</Sider>
 	)
 }
+
+export default SiderDashboard

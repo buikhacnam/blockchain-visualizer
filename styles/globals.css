@@ -17,7 +17,6 @@ a {
 }
 
 .ant-layout {
-	/* background-color: #FFFFFF !important; */
 	height: 120vh;
 }
 
@@ -81,7 +80,4 @@ p {
 	.ant-modal-content {
 		width: 450px !important;
 	}
-}
-
-.ant-card-bordered {
 }

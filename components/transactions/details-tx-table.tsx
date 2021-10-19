@@ -6,8 +6,11 @@ import { useBlockchain } from '../../context/global-context'
 import { Blockchain } from '../../utils/blockchain'
 import Link from 'next/link'
 
+interface DetailsTxTableProps {
+	address: string
+}
 
-const DetailsTxTable = ({address}: any) => {
+const DetailsTxTable: React.FC<DetailsTxTableProps> = ({address}: any) => {
 	const { state, dispatch } = useBlockchain()
 
 	useEffect(() => {

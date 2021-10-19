@@ -1,18 +1,14 @@
-import React, { Children, useState } from 'react'
-import Link from 'next/link'
-import { Layout, Menu, Button } from 'antd'
+import React, { useState } from 'react'
+import { Layout, Button } from 'antd'
 import {
 	MenuUnfoldOutlined,
 	MenuFoldOutlined,
 	EuroCircleOutlined,
-	UserOutlined,
-	VideoCameraOutlined,
-	UploadOutlined,
 } from '@ant-design/icons'
 import SiderDashboard from './sider/dashboard-sider'
 import styled from 'styled-components'
 
-const { Header, Sider, Content } = Layout
+const { Header, Content } = Layout
 
 export default function Dashboard({ children }: { children: React.ReactNode }) {
 	const [collapsed, setCollapsed] = useState(false)
@@ -25,7 +21,10 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
 		<Layout>
 			<SiderDashboard toggle={toggle} collapsed={collapsed} />
 			<Layout className='site-layout'>
-				<HeaderStyled className="site-layout-background" style={{ padding: 0 }}>
+				<HeaderStyled
+					className='site-layout-background'
+					style={{ padding: 0 }}
+				>
 					{collapsed ? (
 						<Button
 							style={{ margin: '0 10px 10px 10px' }}
@@ -43,9 +42,12 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
 							<MenuFoldOutlined />
 						</Button>
 					)}
-					<p className='logo-style'><EuroCircleOutlined style={{color: '#d3af37'}}/>&nbsp;Bui Coin</p>
+					<p className='logo-style'>
+						<EuroCircleOutlined style={{ color: '#d3af37' }} />
+						&nbsp;Bui Coin
+					</p>
 				</HeaderStyled>
-				<Content style={{height: '100%'}}>{children}</Content>
+				<Content style={{ height: '100%' }}>{children}</Content>
 			</Layout>
 		</Layout>
 	)
@@ -53,7 +55,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
 
 const HeaderStyled = styled(Header)`
 	&.ant-layout-header {
-		background: #FFFFFF !important;
+		background: #ffffff !important;
 		height: 50px !important;
 		line-height: 50px !important;
 	}
