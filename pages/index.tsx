@@ -15,7 +15,7 @@ const Home: NextPage = () => {
 		if (!window.buiCoin) {
 			window.buiCoin = new Blockchain()
 		}
-		dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
+		dispatch({ type: 'get_blockchain' })
 	}, [])
 
 	return (

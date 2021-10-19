@@ -9,7 +9,7 @@ const TransactionTable = ({ timestamp }: any) => {
 	const blockSource = state.blockchainState.chain.find(
 		(block: any) => block.timestamp === timestamp
 	)
-	const transactionSource = blockSource.transactions
+	const transactionSource = blockSource?.transactions
 	console.log('src', transactionSource)
 	return (
 		<TableWrapper>

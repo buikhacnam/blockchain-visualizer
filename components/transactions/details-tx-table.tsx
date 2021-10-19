@@ -8,13 +8,13 @@ import Link from 'next/link'
 
 
 const DetailsTxTable = ({address}: any) => {
-	const { state, dispatch, myWalletAddress } = useBlockchain()
+	const { state, dispatch } = useBlockchain()
 
 	useEffect(() => {
 		if (!window.buiCoin) {
 			window.buiCoin = new Blockchain()
 		}
-		dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
+		dispatch({ type: 'get_blockchain'})
 	}, [])
 
 	const pendingTx = state.blockchainState?.getTransactionsOfAddress(address)

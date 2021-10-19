@@ -12,7 +12,7 @@ const MyWalletPage = () => {
 			window.buiCoin = new Blockchain()
 		}
 		console.log('run effect')
-		dispatch({ type: 'get_blockchain', blocks: window.buiCoin })
+		dispatch({ type: 'get_blockchain' })
 	}, [])
 	return (
 		<div className='page-wrapper'>
