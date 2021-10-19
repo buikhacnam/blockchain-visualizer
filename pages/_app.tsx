@@ -5,6 +5,8 @@ import { GlobalProvider } from '../context/global-context'
 import Dashboard from '../components/dashboard'
 import WelcomeAlert from '../components/welcome-alert'
 import { useEffect } from 'react'
+import Head from 'next/head'
+
 declare global {
 	interface Window {
 		buiCoin: any
@@ -22,6 +24,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 	}, [])
 	return (
 		<GlobalProvider>
+			<Head>
+				<title>Bui Coin - Blockchain Demo</title>
+				<meta
+					name='description'
+					content='Bui Coin is a platform for learning the fundamental of blockchain'
+				/>
+			</Head>
 			<Dashboard>
 				<WelcomeAlert />
 				<Component {...pageProps} />
