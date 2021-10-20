@@ -97,7 +97,7 @@ const reducer = (state: State, action: Action) => {
 	}
 }
 
-const initialState = {blockchainState: {}}
+const initialState = {blockchainState: {} as BlockChainInterface}
 const GlobalProvider = ({ children }: AppProviderProps) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	const value = { state, dispatch }
