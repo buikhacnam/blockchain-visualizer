@@ -13,7 +13,7 @@ interface BlockChainInterface {
 	pendingTransactions: Transaction[],
 	difficulty: number,
 	miningReward: number,
-	getBalanceOfAddress: any,
+	getBalanceOfAddress: (address: any) => number,
 	isChainValid: () => boolean,
 	addTransaction: (transaction: Transaction) => BlockChainInterface,
 	minePendingTransactions: (miningRewardAddress: string) => BlockChainInterface,
@@ -97,7 +97,7 @@ const reducer = (state: State, action: Action) => {
 	}
 }
 
-const initialState = {blockchainState: {} as BlockChainInterface}
+const initialState = { blockchainState: new Blockchain() }
 const GlobalProvider = ({ children }: AppProviderProps) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	const value = { state, dispatch }

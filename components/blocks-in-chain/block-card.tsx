@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { Card, Button } from 'antd'
 import TransactionModal from '../transactions/transaction-modal'
 
@@ -16,9 +15,9 @@ const BlockCard: React.FC<BlockCardProps> = ({ block, blockNum, timestamp }) => 
 		setIsModalVisible(false)
 	}
 	return (
-		<BlockCardStyled>
+		<div className='block-card-style'>
 			<Card title={blockNum > 0? `Block ${blockNum + 1}`: `Block ${blockNum + 1} (Genesis)`} hoverable style={{cursor: 'default'}}>
-				<BlockCardContent>
+				<div>
 					<p title={block.hash}>
 						Hash{' '}
 						<span style={{ color: block.color }}>
@@ -51,7 +50,7 @@ const BlockCard: React.FC<BlockCardProps> = ({ block, blockNum, timestamp }) => 
 					>
 						See Transactions
 					</Button>
-				</BlockCardContent>
+				</div>
 			</Card>
 			<TransactionModal
 				blockNum={blockNum}
@@ -59,27 +58,9 @@ const BlockCard: React.FC<BlockCardProps> = ({ block, blockNum, timestamp }) => 
 				isModalVisible={isModalVisible}
 				handleCancel={handleCancel}
 			/>
-		</BlockCardStyled>
+		</div>
 	)
 }
 
 export default BlockCard
 
-const BlockCardStyled = styled.div`
-	/* overflow-wrap: break-word; */
-	word-break: break-all;
-	display: inline-block;
-	margin: 0 10px;
-
-	span {
-		display: block;
-		font-size: 0.7rem;
-		color: #8c8c8c;
-	}
-
-	.bt > span {
-		color: unset !important;
-	}
-`
-const BlockCardContent = styled.div`
-`

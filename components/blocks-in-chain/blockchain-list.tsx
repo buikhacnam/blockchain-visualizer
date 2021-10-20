@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useBlockchain } from '../../context/global-context'
 import BlockCard from './block-card'
 
@@ -7,8 +6,8 @@ const BlockchainList = () => {
 	const { state } = useBlockchain()
 	if (!state?.blockchainState?.chain?.length) return <div>Loading...</div>
 	return (
-		<ChainListWrapper>
-			<ChainListStyled>
+		<div className='chain-list-wrapper'>
+			<div className='chain-list-styled'>
 				{state.blockchainState.chain.map(
 					(block: any, index: number) => {
 						return (
@@ -21,24 +20,9 @@ const BlockchainList = () => {
 						)
 					}
 				)}
-			</ChainListStyled>
-		</ChainListWrapper>
+			</div>
+		</div>
 	)
 }
 
 export default BlockchainList
-
-const ChainListWrapper = styled.div`
-	position: relative;
-	width: 100%;
-	height: 100%;
-`
-
-const ChainListStyled = styled.div`
-    padding: 40px 10px;
-	overflow-x: scroll;
-	overflow-y: hidden;
-	white-space: nowrap;
-	background-color: #ECECEC;
-	/* background: #fafafa; */
-`

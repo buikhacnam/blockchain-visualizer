@@ -85,3 +85,32 @@ p {
 		width: 450px !important;
 	}
 }
+
+.chain-list-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.chain-list-styled {
+	padding: 40px 10px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	background-color: #ECECEC;
+}
+
+.block-card-style {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+.block-card-style span {
+	display: block;
+	font-size: 0.7rem;
+	color: #8c8c8c;
+}
+
+.bt > span {
+	color: unset !important;
+}
