@@ -28,7 +28,7 @@ const AlertContent = () => {
 				<a
 					rel='noreferrer'
 					target='_blank'
-					href='https://buinam.com/#section-projects'
+					href='https://buinam.com'
 				>
 					Buinam.com
 				</a>{' '}
