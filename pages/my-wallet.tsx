@@ -27,7 +27,7 @@ const MyWalletPage: NextPage = () => {
 			<p>
 				<b>Balance</b>
 			</p>
-			<p>{state.blockchainState?.getBalanceOfAddress(myWalletAddress)}</p>
+			<p>{state?.blockchainState?.getBalanceOfAddress(myWalletAddress)}</p>
 			<Divider />
 			<h1>Transactions</h1>
 			
