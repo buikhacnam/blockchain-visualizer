@@ -113,4 +113,5 @@ p {
 
 .bt > span {
 	color: unset !important;
+	font-size: unset !important;
 }
