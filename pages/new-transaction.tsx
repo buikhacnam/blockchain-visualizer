@@ -89,7 +89,7 @@ const NewTransactionPage: NextPage = () => {
 						},
 					]}
 				>
-					<Input type='number' />
+					<Input type='number' placeholder='10'/>
 				</Form.Item>
 
 				<Form.Item>
