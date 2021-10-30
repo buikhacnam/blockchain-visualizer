@@ -3,7 +3,12 @@ const EC = require('elliptic').ec
 const ec = new EC('secp256k1')
 
 class Transaction {
-	constructor(fromAddress, toAddress, amount) {
+	public fromAddress: string | null
+	public toAddress: string
+	public amount: string
+	public timestamp: number
+	public signature?: string
+	constructor(fromAddress: string | null, toAddress: string, amount: string) {
 		this.fromAddress = fromAddress
 		this.toAddress = toAddress
 		this.amount = amount
@@ -14,7 +19,7 @@ class Transaction {
 		return SHA256(this.fromAddress + this.toAddress + this.amount).toString()
 	}
 
-	signTransaction(signingKey) {
+	signTransaction(signingKey: any) {
 		if (signingKey.getPublic('hex') !== this.fromAddress) {
 			throw new Error('You cannot sign transactions for other wallets!')
 		}
@@ -36,7 +41,14 @@ class Transaction {
 }
 
 class Block {
-	constructor(timestamp, transactions, previousHash, previousColor) {
+	public timestamp: number
+	public transactions: Transaction[]
+	public hash: string
+	public previousHash: string
+	public nonce: number
+	public color: string
+	public previousColor: string
+	constructor(timestamp: number, transactions: Transaction[], previousHash: string, previousColor: string) {
 		this.timestamp = timestamp
 		this.transactions = transactions
 		this.previousHash = previousHash
@@ -55,7 +67,7 @@ class Block {
 		).toString()
 	}
 
-	mineBlock(difficulty) {
+	mineBlock(difficulty: number) {
 		while (
 			this.hash.substring(0, difficulty) !==
 			Array(difficulty + 1).join('0')
@@ -85,15 +97,19 @@ class Block {
 }
 
 class Blockchain {
+	public chain: Block[]
+	public pendingTransactions: Transaction[]
+	public difficulty: number
+	public miningReward: string
 	constructor() {
 		this.chain = [this.createGenesisBlock()]
 		this.difficulty = 2
 		this.pendingTransactions = []
-		this.miningReward = 100
+		this.miningReward = "100"
 	}
 
 	createGenesisBlock() {
-		return new Block('1483228800000', 'Genesis block', '0', '#B8B8B8')
+		return new Block(1483228800000, [], '0', '#B8B8B8')
 	}
 
 	getLatestBlock() {
@@ -107,7 +123,7 @@ class Blockchain {
 	//     this.chain.push(newBlock)
 	// }
 
-	minePendingTransactions(miningRewardAddress) {
+	minePendingTransactions(miningRewardAddress: string) {
 		const rewardTx = new Transaction(null, miningRewardAddress, this.miningReward)
 		this.pendingTransactions.push(rewardTx)
 		let prevHash = this.getLatestBlock().hash
@@ -132,7 +148,7 @@ class Blockchain {
 		this.pendingTransactions = []
 	}
 
-	addTransaction(transaction) {
+	addTransaction(transaction: Transaction) {
 		if (!transaction.fromAddress || !transaction.toAddress) {
 			throw new Error('Transaction must include from and to address')
 		}
@@ -145,16 +161,16 @@ class Blockchain {
 		)
 	}
 
-	getBalanceOfAddress(address) {
+	getBalanceOfAddress(address: string) {
 		let balance = 0
 
 		for (const block of this.chain) {
 			for (const trans of block.transactions) {
 				if (trans.fromAddress === address) {
-					balance -= trans.amount
+					balance -= Number(trans.amount)
 				}
 				if (trans.toAddress === address) {
-					balance += trans.amount
+					balance += Number(trans.amount)
 				}
 			}
 		}
@@ -186,12 +202,12 @@ class Blockchain {
 		return true
 	}
 
-	changeSettings(difficulty, miningReward) {
+	changeSettings(difficulty: number, miningReward: string) {
 		this.difficulty = difficulty
 		this.miningReward = miningReward
 	}
 
-	getTransactionsOfAddress(address) {
+	getTransactionsOfAddress(address: string) {
 		let transactions = []
 		for (const block of this.chain) {
 			for (const trans of block.transactions) {
@@ -203,30 +219,10 @@ class Blockchain {
 		}
 		return transactions
 	}
-
-	getAllAddresses() {
-		let address = []
-		let seen = {}
-
-		for (const block of this.chain) {
-			for (const trans of block.transactions) {
-				if (!seen[trans.fromAddress]) {
-					address.push(fromAddress)
-					seen[trans.fromAddress] = 1
-				}
-				else if (!seen[trans.toAddress]) {
-					address.push(toAddress)
-					seen[trans.toAddress] = 1
-				}
-				
-			}
-		}
-		return address
-	}
 }
 
-module.exports = {
-    Blockchain,
+export {
+	Blockchain,
     Block,
     Transaction
 }
