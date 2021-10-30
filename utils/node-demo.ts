@@ -26,3 +26,5 @@ myCoin.getBalanceOfAddress(myWalletAddress)
 myCoin.chain[1].transactions[0].amount = 1
 
 myCoin.isChainValid()
+
+export {}
