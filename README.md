@@ -15,7 +15,7 @@ You can see the entire blockchain, or you can see all transactions in each block
 
 ## Transaction inside a block
 
-<img src='./public/transaction.png />
+<img src='./public/transaction.png' />
 
 ## Adjust the mining reward and mining difficulty
 
