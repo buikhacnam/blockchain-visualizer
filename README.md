@@ -13,7 +13,7 @@ You can see the entire blockchain, or you can see all transactions in each block
 
 <img src='./public/pending-transaction.png'>
 
-## Transaction inside a block
+## Transactions inside a block
 
 <img src='./public/transaction.png' />
 
