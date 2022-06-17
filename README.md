@@ -1,3 +1,33 @@
+# Blockchain Visualizer
+This project helps you visualize the blockchain of a cryptocurrency. 
+
+You can see the entire blockchain, or you can see all transactions in each block.
+
+<img src='./public/blockonchain.png' />
+
+## Make a transaction
+
+<img src='./public/create-transaction.png' />
+
+## Pending transaction waiting to be mined
+
+<img src='./public/pending-transaction.png'>
+
+## Transaction inside a block
+
+<img src='./public/transaction.png />
+
+## Adjust the mining reward and mining difficulty
+
+<img src='./public/settings.png' />
+
+## Your wallet
+
+<img src='./public/my-wallet.png' />
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
