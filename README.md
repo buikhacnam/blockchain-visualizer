@@ -3,6 +3,8 @@ This project helps you visualize the blockchain of a cryptocurrency.
 
 You can see the entire blockchain, or you can see all transactions in each block.
 
+Live app: https://blockchain-how.vercel.app/
+
 <img src='./public/blockonchain.png' />
 
 ## Make a transaction
